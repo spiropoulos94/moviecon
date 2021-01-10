@@ -1,0 +1,70 @@
+
+/*--------------------------------------------------------------
+# Our Team
+--------------------------------------------------------------*/
+.green {
+  background: green;
+}
+
+
+
+.related-movies .related-movie {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.related-movies .related-movie .movie-avatar {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: 0.2s;
+}
+
+.related-movies .related-movie .related-movie-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  transition: bottom 0.4s;
+}
+
+.related-movies .related-movie .related-movie-content h4 {
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.related-movies .related-movie .related-movie-content span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+  color: #fff;
+}
+
+.related-movies .related-movie .social {
+  position: absolute;
+  left: 0;
+  bottom: -38px;
+  right: 0;
+  height: 48px;
+  transition: bottom ease-in-out 0.4s;
+  text-align: center;
+}
+
+
+.related-movies .related-movie:hover .movie-avatar {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 212, 255, 0) 100%);
+  opacity: 1;
+  transition: 0.4s;
+}
+
+.related-movies .related-movie:hover .related-movie-content {
+  bottom: 60px;
+  transition: bottom 0.4s;
+}

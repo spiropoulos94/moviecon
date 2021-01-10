@@ -15,11 +15,13 @@ import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Avatar from '@material-ui/core/Avatar';
 import "./movie-card.styles.scss";
+import RelatedMovies from "../related-movies/related-movies.component";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 900,
+        maxWidth: 850,
         width: '100%'
     },
     heading: {
@@ -40,8 +42,9 @@ const useStyles = makeStyles((theme) => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
-    avatar: {
-        backgroundColor: red[500],
+    large: {
+        width: theme.spacing(7),
+        height: theme.spacing(7),
     },
 }));
 
@@ -62,7 +65,7 @@ export default function RecipeReviewCard() {
                     title="Paella dish"
                 />
                 <CardHeader
-                    title="Shrimp and Chorizo Paella"
+                    title="Harry Potter and the Strange Stranger"
                     subheader="2016"
                 />
 
@@ -98,52 +101,52 @@ export default function RecipeReviewCard() {
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <div className="movie-card-trailer mb-2">
-                            <iframe width="420" height="315"
+                            <iframe width="100%" height="315"
                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                             </iframe>
                         </div>
                         <Typography paragraph>Reviews</Typography>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography className={classes.heading}>Accordion 1</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel2a-content"
-                                id="panel2a-header"
-                            >
-                                <Typography className={classes.heading}>Accordion 2</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                    sit amet blandit leo lobortis eget.
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-
-                        <Typography paragraph className="mt-4">
-                            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                            without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                            medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                            again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                            minutes more. (Discard any mussels that don’t open.)
-                        </Typography>
-                        <Typography>
-                            Set aside off of the heat to let rest for 10 minutes, and then serve.
-                        </Typography>
+                        <div className="mb-4" >
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon/>}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className={classes.heading}>Accordion 1</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
+                                        lacus
+                                        ex,
+                                        sit amet blandit leo lobortis eget.
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon/>}
+                                    aria-controls="panel2a-content"
+                                    id="panel2a-header"
+                                >
+                                    <Typography className={classes.heading}>Accordion 2</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
+                                        lacus
+                                        ex,
+                                        sit amet blandit leo lobortis eget.
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        </div>
+                        <Typography paragraph>Similar Movies</Typography>
+                        {/*<div className={classes.root}>*/}
+                        {/*    <Avatar alt="Remy Sharp" src="https://images.pexels.com/photos/3359734/pexels-photo-3359734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" className={classes.large} />*/}
+                        {/*</div>*/}
+                        <RelatedMovies/>
                     </CardContent>
                 </Collapse>
             </Card>
