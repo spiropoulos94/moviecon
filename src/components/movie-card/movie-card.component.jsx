@@ -7,18 +7,16 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded';
+import "./movie-card.styles.scss";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 345,
+        maxWidth: 445,
     },
     media: {
         height: 0,
@@ -50,25 +48,16 @@ export default function RecipeReviewCard() {
     return (
         <div className="movie-card">
             <Card className={classes.root}>
-                <CardHeader
-                    avatar={
-                        <Avatar aria-label="recipe" className={classes.avatar}>
-                            R
-                        </Avatar>
-                    }
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon/>
-                        </IconButton>
-                    }
-                    title="Shrimp and Chorizo Paella"
-                    subheader="September 14, 2016"
-                />
                 <CardMedia
                     className={classes.media}
-                    image="/static/images/cards/paella.jpg"
+                    image="https://www.soda.com/wp-content/uploads/2020/04/harry-potter-streaming-guide.jpg"
                     title="Paella dish"
                 />
+                <CardHeader
+                    title="Shrimp and Chorizo Paella"
+                    subheader="2016"
+                />
+
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
                         This impressive paella is a perfect party dish and a fun meal to cook together with your
@@ -76,12 +65,17 @@ export default function RecipeReviewCard() {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon/>
-                    </IconButton>
-                    <IconButton aria-label="share">
-                        <ShareIcon/>
-                    </IconButton>
+                    <div className="d-flex align-items-center justify-content-around card-bottom">
+                        <Typography variant="body4" color="textSecondary" component="p">
+                            <div className="d-flex align-items-center">
+                                <ThumbUpRoundedIcon/>
+                                <span className="rating">85%</span>
+                            </div>
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            Action Drama Romance
+                        </Typography>
+                    </div>
                     <IconButton
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,
@@ -95,18 +89,15 @@ export default function RecipeReviewCard() {
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
+                        <div className="movie-card-trailer mb-2">
+                            <iframe width="420" height="315"
+                                    src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            </iframe>
+                        </div>
                         <Typography paragraph>Method:</Typography>
                         <Typography paragraph>
                             Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
                             minutes.
-                        </Typography>
-                        <Typography paragraph>
-                            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
                         </Typography>
                         <Typography paragraph>
                             Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook

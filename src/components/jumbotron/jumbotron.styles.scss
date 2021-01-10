@@ -1,16 +1,14 @@
 .jumbotron-wrapper {
   .jumbotron {
     //background-image: url("https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    //background-blend-mode: luminosity;
+    //background-blend-mode: darken;
     //background-size: contain;
     color: white;
+    background-color: #064789;
     h1 {
       font-weight: 500;
     }
-    background-color: #064789;
-    .container {
-      display: flex;
-      justify-content: space-between;
-    }
+
   }
 }
+

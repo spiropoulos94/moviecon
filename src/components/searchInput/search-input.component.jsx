@@ -8,10 +8,12 @@ const SearchInput = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn" type="submit">Search</button>
-        </form>
+        <div className="mt-5 search-input">
+            <form onSubmit={handleSubmit} className="d-flex no-wrap">
+                <input className="form-control" type="search" placeholder="Type movie title..." aria-label="Search"/>
+                <button className="btn" type="submit">Search</button>
+            </form>
+        </div>
     );
 };
 
