@@ -3,9 +3,11 @@ import "./header.styles.scss";
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-dark ">
-            <a className="navbar-brand" href="#">MovieCon</a>
-        </nav>
+        <div className="navbar-wrapper">
+            <nav className="navbar navbar-dark ">
+                <a className="navbar-brand" href="#">MovieCon</a>
+            </nav>
+        </div>
     );
 };
 

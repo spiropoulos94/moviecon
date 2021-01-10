@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Header/>
       <MainView/>
-        <ScrollToTop smooth color={"#064789"}/>
+      <ScrollToTop smooth color={"#064789"}/>
     </div>
   );
 }

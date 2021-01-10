@@ -19,8 +19,8 @@ import RelatedMovies from "../related-movies/related-movies.component";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 750,
-        maxHeight: 720,
+        maxWidth: 600,
+        maxHeight: 655,
         overflow: 'auto',
         width: '100%',
         border: "5px solid #064789",

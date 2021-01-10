@@ -1,8 +1,14 @@
-.navbar {
-  background-color:#4E5283;
-
-  .navbar-brand {
-    font-size: 2rem;
-    color: white;
+.navbar-wrapper{
+  .navbar {
+    background-color:#4E5283;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    .navbar-brand {
+      font-size: 2rem;
+      color: white;
+    }
   }
 }
