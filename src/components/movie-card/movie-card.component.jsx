@@ -12,11 +12,19 @@ import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import "./movie-card.styles.scss";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 445,
+        maxWidth: 900,
+        width: '100%'
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
     },
     media: {
         height: 0,
@@ -94,12 +102,39 @@ export default function RecipeReviewCard() {
                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                             </iframe>
                         </div>
-                        <Typography paragraph>Method:</Typography>
-                        <Typography paragraph>
-                            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                            minutes.
-                        </Typography>
-                        <Typography paragraph>
+                        <Typography paragraph>Reviews</Typography>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography className={classes.heading}>Accordion 1</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                    sit amet blandit leo lobortis eget.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel2a-content"
+                                id="panel2a-header"
+                            >
+                                <Typography className={classes.heading}>Accordion 2</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                                    sit amet blandit leo lobortis eget.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Typography paragraph className="mt-4">
                             Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
                             without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
                             medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
