@@ -8,6 +8,9 @@
       font-weight: 500;
     }
     background-color: #064789;
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
   }
-
 }
