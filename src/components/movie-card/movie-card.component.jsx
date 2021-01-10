@@ -150,6 +150,17 @@ const useStyles = makeStyles((theme) => ({
                         </div>
                         <Typography paragraph>Similar Movies</Typography>
                         <RelatedMovies/>
+                        {/* todo vale to velaki sta deksia tou card*/}
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: expanded,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon/>
+                        </IconButton>
                     </CardContent>
                 </Collapse>
             </Card>
