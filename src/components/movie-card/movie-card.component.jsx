@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         border: "5px solid #064789",
         backgroundColor: 'white',
-        position: "relative"
     },
     genres: {
         fontSize: '1rem',
@@ -55,10 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
     secondExpand: {
         transform: 'rotate(180deg)',
-        position: "absolute",
-        padding: "10x",
-        bottom: "-90.5%",
-        right: "1%",
+        marginLeft:"auto",
         color: "white",
         background: "#064789",
         '&:hover': {
