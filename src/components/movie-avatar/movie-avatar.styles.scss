@@ -39,19 +39,15 @@
   color: #fff;
 }
 
-.related-movie-content {
 
-  @media (max-width: 320px) {
+@media (max-width: 321px) {
+  .related-movie-content {
     h4, span {
       font-size: 12px;
     }
-
   }
+
 }
-
-
-
-
 
 
 .related-movie:hover .movie-avatar {
@@ -59,6 +55,7 @@
   opacity: 1;
   transition: 0.4s;
 }
+
 .related-movie:hover .related-movie-content {
   bottom: 40px;
   transition: bottom 0.4s;
