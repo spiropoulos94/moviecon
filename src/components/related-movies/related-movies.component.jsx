@@ -10,6 +10,7 @@ const RelatedMovies = () => {
                     <MovieAvatar/>
                     <MovieAvatar/>
                     <MovieAvatar/>
+                    <MovieAvatar/>
                 </div>
 
             </div>

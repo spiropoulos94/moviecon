@@ -24,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 850,
         width: '100%'
     },
+    genres: {
+        fontSize: '1rem',
+        '@media (max-width:320px)': {
+            fontSize: '0.75rem',
+        },
+    },
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
@@ -48,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function RecipeReviewCard() {
+ const  MovieCard = () => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -83,8 +89,8 @@ export default function RecipeReviewCard() {
                                 <span className="rating">85%</span>
                             </div>
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            Action Drama Romance
+                        <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
+                           Action/Drama/Romance
                         </Typography>
                     </div>
                     <IconButton
@@ -143,9 +149,6 @@ export default function RecipeReviewCard() {
                             </Accordion>
                         </div>
                         <Typography paragraph>Similar Movies</Typography>
-                        {/*<div className={classes.root}>*/}
-                        {/*    <Avatar alt="Remy Sharp" src="https://images.pexels.com/photos/3359734/pexels-photo-3359734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" className={classes.large} />*/}
-                        {/*</div>*/}
                         <RelatedMovies/>
                     </CardContent>
                 </Collapse>
@@ -153,3 +156,5 @@ export default function RecipeReviewCard() {
         </div>
     );
 }
+
+export default MovieCard;
