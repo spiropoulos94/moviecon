@@ -5,8 +5,8 @@ import MovieAvatar from "../movie-avatar/movie-avatar.component";
 const RelatedMovies = () => {
     return (
         <div  className="related-movies">
-            <div className="container">
-                <div className="row justify-content-center">
+            <div className="container-fluid">
+                <div className="row related-movies-grid d-flex justify-content-center">
                     <MovieAvatar/>
                     <MovieAvatar/>
                     <MovieAvatar/>

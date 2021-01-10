@@ -9,20 +9,23 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {red} from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Avatar from '@material-ui/core/Avatar';
 import "./movie-card.styles.scss";
 import RelatedMovies from "../related-movies/related-movies.component";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 850,
-        width: '100%'
+        maxWidth: 750,
+        maxHeight: 720,
+        overflow: 'auto',
+        width: '100%',
+        border: "5px solid #064789",
+        backgroundColor: 'white',
+        position: "relative"
     },
     genres: {
         fontSize: '1rem',
@@ -36,25 +39,40 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         height: 0,
-        paddingTop: '56.25%', // 16:9
+        paddingTop: '46.25%', // 16:9
     },
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
+        color: "white",
+        background: "#064789",
+        '&:hover': {
+            background: "#064789",
+        },
         transition: theme.transitions.create('transform', {
             duration: theme.transitions.duration.shortest,
         }),
     },
+    secondExpand: {
+        transform: 'rotate(180deg)',
+        position: "absolute",
+        padding: "10x",
+        bottom: "-90.5%",
+        right: "1%",
+        color: "white",
+        background: "#064789",
+        '&:hover': {
+            background: "#064789",
+        },
+
+    },
     expandOpen: {
         transform: 'rotate(180deg)',
-    },
-    large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
-    },
+        display: 'none'
+    }
 }));
 
- const  MovieCard = () => {
+const MovieCard = () => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -90,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
                             </div>
                         </Typography>
                         <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
-                           Action/Drama/Romance
+                            Action/Drama/Romance
                         </Typography>
                     </div>
                     <IconButton
@@ -112,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
                             </iframe>
                         </div>
                         <Typography paragraph>Reviews</Typography>
-                        <div className="mb-4" >
+                        <div className="mb-4">
                             <Accordion>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon/>}
@@ -150,17 +168,17 @@ const useStyles = makeStyles((theme) => ({
                         </div>
                         <Typography paragraph>Similar Movies</Typography>
                         <RelatedMovies/>
-                        {/* todo vale to velaki sta deksia tou card*/}
-                        <IconButton
-                            className={clsx(classes.expand, {
-                                [classes.expandOpen]: expanded,
-                            })}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                        >
-                            <ExpandMoreIcon/>
-                        </IconButton>
+                        <CardActions disableSpacing>
+                            <IconButton
+                                className={clsx(classes.secondExpand, {
+                                })}
+                                onClick={handleExpandClick}
+                                aria-expanded={expanded}
+                                aria-label="show more"
+                            >
+                                <ExpandMoreIcon/>
+                            </IconButton>
+                        </CardActions>
                     </CardContent>
                 </Collapse>
             </Card>

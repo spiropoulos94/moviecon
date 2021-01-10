@@ -12,6 +12,7 @@
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
+
 }
 
 .related-movie .movie-avatar {
@@ -42,6 +43,7 @@
 
 @media (max-width: 321px) {
   .related-movie-content {
+    bottom: 2px;
     h4, span {
       font-size: 12px;
     }
