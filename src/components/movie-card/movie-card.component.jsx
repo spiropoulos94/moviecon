@@ -81,7 +81,7 @@ const MovieCard = () => {
             <Card className={classes.root}>
                 <CardMedia
                     className={classes.media}
-                    image="https://www.soda.com/wp-content/uploads/2020/04/harry-potter-streaming-guide.jpg"
+                    image="https://image.tmdb.org/t/p/w500/srYya1ZlI97Au4jUYAktDe3avyA.jpg"
                     title="Paella dish"
                 />
                 <CardHeader
