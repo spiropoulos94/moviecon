@@ -6,7 +6,7 @@ const Jumbotron = () => {
         <div className="jumbotron-wrapper">
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
-                    <h1 className="display-3">In Theaters</h1>
+                    <h1 className="display-4">In Theaters</h1>
                 </div>
             </div>
         </div>
