@@ -11,6 +11,7 @@ import {useInfiniteQuery} from "react-query";
 // posterExample  "https://image.tmdb.org/t/p/w500/srYya1ZlI97Au4jUYAktDe3avyA.jpg"
 
 //TODO LEFT VIDEO ON 12.57 https://www.youtube.com/watch?v=ZE0xeClKosA
+// append to response https://developers.themoviedb.org/3/getting-started/append-to-response
 
 const MovieList = () => {
 
