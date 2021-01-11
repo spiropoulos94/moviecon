@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
     secondExpand: {
         transform: 'rotate(180deg)',
-        marginLeft:"auto",
+        marginLeft: "auto",
         color: "white",
         background: "#064789",
         '&:hover': {
@@ -68,7 +68,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const MovieCard = () => {
+const MovieCard = ({movie}) => {
+    console.log("MOVIE IS ", movie)
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -77,108 +78,111 @@ const MovieCard = () => {
     };
 
     return (
-        <div className="movie-card">
-            <Card className={classes.root}>
-                <CardMedia
-                    className={classes.media}
-                    image="https://image.tmdb.org/t/p/w500/srYya1ZlI97Au4jUYAktDe3avyA.jpg"
-                    title="Paella dish"
-                />
-                <CardHeader
-                    title="Harry Potter and the Strange Stranger"
-                    subheader="2016"
-                />
+        <>
+            {movie && <div className="movie-card">
+                <Card className={classes.root} raised>
+                    <CardMedia
+                        className={classes.media}
+                        image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        title={`${movie.original_title}`}
+                    />
+                    <CardHeader
+                        title={`${movie.original_title}`}
+                        subheader={`${movie.release_date.substring(0,4)}`}
+                    />
 
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        This impressive paella is a perfect party dish and a fun meal to cook together with your
-                        guests. Add 1 cup of frozen peas along with the mussels, if you like.
-                    </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                    <div className="d-flex align-items-center justify-content-around card-bottom">
-                        <Typography variant="body4" color="textSecondary" component="p">
-                            <div className="d-flex align-items-center">
-                                <ThumbUpRoundedIcon/>
-                                <span className="rating">85%</span>
-                            </div>
-                        </Typography>
-                        <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
-                            Action/Drama/Romance
-                        </Typography>
-                    </div>
-                    <IconButton
-                        className={clsx(classes.expand, {
-                            [classes.expandOpen]: expanded,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon/>
-                    </IconButton>
-                </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <div className="movie-card-trailer mb-2">
-                            <iframe width="100%" height="315"
-                                    src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                            </iframe>
-                        </div>
-                        <Typography paragraph>Reviews</Typography>
-                        <div className="mb-4">
-                            <Accordion>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon/>}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
-                                    <Typography className={classes.heading}>Accordion 1</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-                                        lacus
-                                        ex,
-                                        sit amet blandit leo lobortis eget.
-                                    </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                            <Accordion>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon/>}
-                                    aria-controls="panel2a-content"
-                                    id="panel2a-header"
-                                >
-                                    <Typography className={classes.heading}>Accordion 2</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-                                        lacus
-                                        ex,
-                                        sit amet blandit leo lobortis eget.
-                                    </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        </div>
-                        <Typography paragraph>Similar Movies</Typography>
-                        <RelatedMovies/>
-                        <CardActions disableSpacing>
-                            <IconButton
-                                className={clsx(classes.secondExpand, {
-                                })}
-                                onClick={handleExpandClick}
-                                aria-expanded={expanded}
-                                aria-label="show more"
-                            >
-                                <ExpandMoreIcon/>
-                            </IconButton>
-                        </CardActions>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {movie.overview}
+                            //TODO TRUNCATE
+                        </Typography>
                     </CardContent>
-                </Collapse>
-            </Card>
-        </div>
+                    <CardActions disableSpacing>
+                        <div className="d-flex align-items-center justify-content-around card-bottom">
+                            <Typography variant="body4" color="textSecondary" component="p">
+                                <div className="d-flex align-items-center">
+                                    <ThumbUpRoundedIcon/>
+                                    <span className="rating">85%</span>
+                                </div>
+                            </Typography>
+                            <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
+                                Action/Drama/Romance
+                            </Typography>
+                        </div>
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: expanded,
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon/>
+                        </IconButton>
+                    </CardActions>
+                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <div className="movie-card-trailer mb-2">
+                                <iframe width="100%" height="315"
+                                        src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                </iframe>
+                            </div>
+                            <Typography paragraph>Reviews</Typography>
+                            <div className="mb-4">
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography className={classes.heading}>Accordion 1</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada
+                                            lacus
+                                            ex,
+                                            sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon/>}
+                                        aria-controls="panel2a-content"
+                                        id="panel2a-header"
+                                    >
+                                        <Typography className={classes.heading}>Accordion 2</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada
+                                            lacus
+                                            ex,
+                                            sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </div>
+                            <Typography paragraph>Similar Movies</Typography>
+                            <RelatedMovies/>
+                            <CardActions disableSpacing>
+                                <IconButton
+                                    className={clsx(classes.secondExpand, {})}
+                                    onClick={handleExpandClick}
+                                    aria-expanded={expanded}
+                                    aria-label="show more"
+                                >
+                                    <ExpandMoreIcon/>
+                                </IconButton>
+                            </CardActions>
+                        </CardContent>
+                    </Collapse>
+                </Card>
+            </div>}
+        </>
     );
 }
 

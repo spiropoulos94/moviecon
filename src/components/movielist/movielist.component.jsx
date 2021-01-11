@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./movielist.styles.scss";
 import MovieCard from "../movie-card/movie-card.component";
+import Spinner from "../spinner/spinner.component";
 import {useInfiniteQuery} from "react-query";
 
 
@@ -37,8 +38,8 @@ const MovieList = () => {
 
     return (
         <div className="movie-list">
-            <MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/>
-            <MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/><MovieCard/>
+            {isFetching && <Spinner/>}
+            {data && data.pages[0].results.map(movie => <MovieCard key={movie.id} movie={movie} />)}
         </div>
     );
 };
