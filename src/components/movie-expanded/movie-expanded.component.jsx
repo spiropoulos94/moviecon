@@ -93,13 +93,9 @@ const MovieExpanded = ({movie}) => {
                         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         title={`${movie.original_title}`}
                     />
-                    <CardHeader
-                        title={`${movie.original_title}`}
-                        subheader={`${movie.release_date.substring(0, 4)}`}
-                    />
 
                     <CardContent>
-                        <Typography className={truncate && classes.truncate} variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" color="textSecondary" component="p">
                             {movie.overview}
                         </Typography>
                     </CardContent>

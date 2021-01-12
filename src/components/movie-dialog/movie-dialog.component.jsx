@@ -66,6 +66,11 @@ const  MovieDialog = ({movie}) => {
             <MovieCard movie={movie} onClick={handleClickOpen} />
 
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+                    {movie.title}
+                    ({`${movie.release_date.substring(0, 4)}`})
+
+                </DialogTitle>
                 <DialogContent dividers>
                     <MovieExpanded movie={movie} />
                 </DialogContent>
