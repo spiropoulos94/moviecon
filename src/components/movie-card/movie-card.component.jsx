@@ -108,7 +108,7 @@ const MovieCard = ({movie}) => {
                             <Typography variant="body4" color="textSecondary" component="p">
                                 <div className="d-flex align-items-center">
                                     <ThumbUpRoundedIcon/>
-                                    <span className="rating">85%</span>
+                                    <span className="rating">{movie.vote_average}</span>
                                 </div>
                             </Typography>
                             <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
