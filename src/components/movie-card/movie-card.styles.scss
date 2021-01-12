@@ -16,13 +16,21 @@
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .movie-card {
     .card-image{
       height: 67%;
     }
     .MuiCardContent-root {
       padding: 5px;
+    }
+    .MuiCardHeader-root {
+      padding: 12px;
+    }
+    .MuiTypography-h5 {
+      font-size: 1.5rem;
+      line-height: 1;
+
     }
   }
 
@@ -34,6 +42,14 @@
     }
     .MuiCardContent-root {
       padding: 2px;
+    }
+    .MuiCardHeader-root {
+      padding: 3px;
+    }
+    .MuiTypography-h5 {
+      font-size: 1.1rem;
+      line-height: 1;
+
     }
   }
   .rating {
