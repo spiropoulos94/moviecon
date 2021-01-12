@@ -20,7 +20,10 @@ import RelatedMovies from "../related-movies/related-movies.component";
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 480,
-        height: 530,
+        height: 830,
+        '@media (max-width:375px)': {
+            height: '700px',
+        },
         overflow: 'auto',
         width: '100%',
         border: "5px solid #064789",
@@ -41,8 +44,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: theme.typography.fontWeightRegular,
     },
     media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
+        height: "70%",
+        // paddingTop: '56.25%', // 16:9
+        '@media (max-width:375px)': {
+            height: '60%',
+        }
     },
     truncate: {
         textOverflow: "ellipsis",

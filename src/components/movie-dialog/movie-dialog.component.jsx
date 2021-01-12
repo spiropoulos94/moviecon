@@ -15,12 +15,21 @@ const styles = (theme) => ({
     root: {
         margin: 0,
         padding: theme.spacing(2),
+        '@media (max-width:380px)': {
+            padding:theme.spacing(1)
+        }
     },
     closeButton: {
         position: 'absolute',
         right: theme.spacing(1),
         top: theme.spacing(1),
         color: theme.palette.grey[500],
+    },
+    dialogPaper: {
+        height:"80vh",
+        '@media (max-width:380px)': {
+            width:"100%"
+        }
     },
 });
 
@@ -51,7 +60,7 @@ const DialogActions = withStyles((theme) => ({
     },
 }))(MuiDialogActions);
 
-const  MovieDialog = ({movie}) => {
+const  MovieDialog = ({movie, classes}) => {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -65,7 +74,7 @@ const  MovieDialog = ({movie}) => {
         <div>
             <MovieCard movie={movie} onClick={handleClickOpen} />
 
-            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} maxWidth="md" >
+            <Dialog classes={{ paper: classes.dialogPaper }} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} maxWidth="lg" >
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                     {movie.title}
                     ({`${movie.release_date.substring(0, 4)}`})
@@ -84,4 +93,4 @@ const  MovieDialog = ({movie}) => {
     );
 }
 
-export default MovieDialog;
+export default withStyles(styles)(MovieDialog);
