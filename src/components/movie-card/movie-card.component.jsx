@@ -20,11 +20,12 @@ import RelatedMovies from "../related-movies/related-movies.component";
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 480,
-        maxHeight: 655,
+        maxHeight: 510,
         overflow: 'auto',
         width: '100%',
         border: "5px solid #064789",
         backgroundColor: 'white',
+        position: 'relative'
     },
     genres: {
         fontSize: '1rem',
@@ -38,16 +39,20 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         height: 0,
-        paddingTop: '46.25%', // 16:9
+        paddingTop: '56.25%', // 16:9
+    },
+    truncate: {
+        textOverflow: "ellipsis",
+        display: "-webkit-box",
+        lineClamp: 2,
+        boxOrient: "vertical",
+        overflow: "hidden",
     },
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
         color: "white",
         background: "#064789",
-        '&:hover': {
-            background: "#064789",
-        },
         transition: theme.transitions.create('transform', {
             duration: theme.transitions.duration.shortest,
         }),
@@ -72,9 +77,11 @@ const MovieCard = ({movie}) => {
     console.log("MOVIE IS ", movie)
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const [truncate, setTruncate] = React.useState(true);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
+        setTruncate(!truncate);
     };
 
     return (
@@ -88,13 +95,12 @@ const MovieCard = ({movie}) => {
                     />
                     <CardHeader
                         title={`${movie.original_title}`}
-                        subheader={`${movie.release_date.substring(0,4)}`}
+                        subheader={`${movie.release_date.substring(0, 4)}`}
                     />
 
                     <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography className={truncate && classes.truncate} variant="body2" color="textSecondary" component="p">
                             {movie.overview}
-                            //TODO TRUNCATE
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
