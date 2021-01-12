@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import "./movielist.styles.scss";
-import MovieCard from "../movie-card/movie-card.component";
 import Spinner from "../spinner/spinner.component";
 import {useInfiniteQuery} from "react-query";
+import MovieDialog from "../movie-dialog/movie-dialog.component";
 
 
 // nowPlayingUrl
@@ -39,7 +39,7 @@ const MovieList = () => {
     return (
         <div className="movie-list">
             {isFetching && <Spinner/>}
-            {data && data.pages[0].results.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+            {data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
         </div>
     );
 };

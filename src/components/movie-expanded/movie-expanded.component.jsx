@@ -14,21 +14,17 @@ import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import "./movie-card.styles.scss";
 import RelatedMovies from "../related-movies/related-movies.component";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 480,
+        maxWidth: "100%",
         maxHeight: 510,
         overflow: 'auto',
         width: '100%',
         border: "5px solid #064789",
         backgroundColor: 'white',
-        position: 'relative',
-        '&:hover': {
-            cursor: "pointer",
-        }
+        position: 'relative'
     },
     genres: {
         fontSize: '1rem',
@@ -76,8 +72,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const MovieCard = ({movie, onClick}) => {
-    console.log("MOVIE IS ", movie)
+
+const MovieExpanded = ({movie}) => {
+
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [truncate, setTruncate] = React.useState(true);
@@ -89,7 +86,7 @@ const MovieCard = ({movie, onClick}) => {
 
     return (
         <>
-            {movie && <div onClick={onClick} className="movie-card">
+            {movie && <div className="movie-card">
                 <Card className={classes.root} raised>
                     <CardMedia
                         className={classes.media}
@@ -119,7 +116,6 @@ const MovieCard = ({movie, onClick}) => {
                             </Typography>
                         </div>
                     </CardActions>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
                             <div className="movie-card-trailer mb-2">
                                 <iframe width="100%" height="315"
@@ -167,22 +163,12 @@ const MovieCard = ({movie, onClick}) => {
                             </div>
                             <Typography paragraph>Similar Movies</Typography>
                             <RelatedMovies/>
-                            <CardActions disableSpacing>
-                                <IconButton
-                                    className={clsx(classes.secondExpand, {})}
-                                    onClick={handleExpandClick}
-                                    aria-expanded={expanded}
-                                    aria-label="show more"
-                                >
-                                    <ExpandMoreIcon/>
-                                </IconButton>
-                            </CardActions>
                         </CardContent>
-                    </Collapse>
+
                 </Card>
             </div>}
         </>
     );
-}
+};
 
-export default MovieCard;
+export default MovieExpanded;
