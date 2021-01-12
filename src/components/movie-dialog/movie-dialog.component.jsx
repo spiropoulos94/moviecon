@@ -26,17 +26,25 @@ const styles = (theme) => ({
         color: theme.palette.grey[500],
     },
     dialogPaper: {
-        height:"80vh",
-        '@media (max-width:380px)': {
-            width:"100%"
-        }
+        backgroundColor:"#b8cdf8",
+        height:"85vh",
+        '@media (max-width:320px)': {
+            height:"99vh",
+            width:"100%",
+            maxHeight:"100%"
+        },
+        '@media (max-width:450px)': {
+            height: "95vh",
+            margin:10
+
+    },
     },
 });
 
 const DialogTitle = withStyles(styles)((props) => {
     const { children, classes, onClose, ...other } = props;
     return (
-        <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <MuiDialogTitle  className={classes.root} {...other}>
             <Typography variant="h6">{children}</Typography>
             {onClose ? (
                 <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>

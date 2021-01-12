@@ -1,10 +1,38 @@
 .movie-card {
   margin: 15px;
+  .card-image {
+    height: 65%;
+  }
 }
 
 .card-bottom {
   width: 100%;
-  .rating {
-    margin: 10px;
+
+}
+
+.rating {
+  margin: 10px;
+}
+
+
+@media (max-width: 400px) {
+  .movie-card {
+    .card-image{
+      height: 67%;
+    }
+    .MuiCardContent-root {
+      padding: 5px;
+    }
+  }
+
+}
+@media (max-width: 320px) {
+  .movie-card {
+    .card-image{
+      height: 55%;
+    }
+    .MuiCardContent-root {
+      padding: 2px;
+    }
   }
 }

@@ -19,15 +19,25 @@ import RelatedMovies from "../related-movies/related-movies.component";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 480,
-        height: 830,
-        '@media (max-width:375px)': {
-            height: '700px',
+        '@media (max-width:450px)': {
+            height: "75vh"
         },
+        '@media (max-width:375px)': {
+            height: '65vh',
+            maxHeight:'none',
+            padding:0,
+        },
+        maxWidth: 420,
+        height: 620,
         overflow: 'auto',
         width: '100%',
         border: "5px solid #064789",
         backgroundColor: 'white',
+        padding:"0",
+        '@media (max-width:320px)': {
+            border: '2px solid #064789',
+            padding:"0",
+        },
         position: 'relative',
         '&:hover': {
             cursor: "pointer",
@@ -35,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
     genres: {
         fontSize: '1rem',
+        margin:'auto',
         '@media (max-width:320px)': {
             fontSize: '0.75rem',
         },
@@ -43,12 +54,25 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
     },
-    media: {
-        height: "70%",
-        // paddingTop: '56.25%', // 16:9
+    title:{
         '@media (max-width:375px)': {
-            height: '60%',
+            padding: '2px 0 0 10px ',
         }
+    },
+    media: {
+        height: "73%",
+        // paddingTop: '56.25%', // 16:9
+        '@media (max-width:420px)': {
+            height: '62%',
+        },
+        '@media (max-width:320px)': {
+            height: '42%',
+        }
+
+    },
+    cardImage:{
+        width:"100%",
+        height:"60%"
     },
     truncate: {
         textOverflow: "ellipsis",
@@ -66,16 +90,12 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.shortest,
         }),
     },
-    secondExpand: {
-        transform: 'rotate(180deg)',
-        marginLeft: "auto",
-        color: "white",
-        background: "#064789",
-        '&:hover': {
-            background: "#064789",
-        },
-
-    },
+   cardActions:{
+     position:"absolute",
+       bottom:0,
+       left:0,
+       right:0
+   },
     expandOpen: {
         transform: 'rotate(180deg)',
         display: 'none'
@@ -97,13 +117,15 @@ const MovieCard = ({movie, onClick}) => {
         <>
             {movie && <div onClick={onClick} className="movie-card">
                 <Card className={classes.root} raised>
-                    <CardMedia
-                        className={classes.media}
-                        image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        title={`${movie.original_title}`}
-                    />
+                    {/*<CardMedia*/}
+                    {/*    className={classes.media}*/}
+                    {/*    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}*/}
+                    {/*    title={`${movie.original_title}`}*/}
+                    {/*/>*/}
+                    <img className="card-image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width={"100%"}  alt={`${movie.original_title}`} />
                     <CardHeader
                         title={`${movie.original_title}`}
+                        className={classes.title}
                         subheader={`${movie.release_date.substring(0, 4)}`}
                     />
 
@@ -112,18 +134,16 @@ const MovieCard = ({movie, onClick}) => {
                             {movie.overview}
                         </Typography>
                     </CardContent>
-                    <CardActions disableSpacing>
-                        <div className="d-flex align-items-center justify-content-around card-bottom">
+                    <CardActions disableSpacing className={classes.cardActions}>
+                        {/*<div className="d-flex align-items-center justify-content-around card-bottom">*/}
                             <Typography variant="body4" color="textSecondary" component="p">
-                                <div className="d-flex align-items-center">
                                     <ThumbUpRoundedIcon/>
                                     <span className="rating">{movie.vote_average}</span>
-                                </div>
                             </Typography>
                             <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
                                 Action/Drama/Romance
                             </Typography>
-                        </div>
+                        {/*</div>*/}
                     </CardActions>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>

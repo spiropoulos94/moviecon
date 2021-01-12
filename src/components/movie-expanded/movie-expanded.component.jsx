@@ -25,7 +25,6 @@ const MovieExpanded = ({movie}) => {
                 maxHeight: "100%",
                 overflow: 'auto',
                 width: '100%',
-                border: "5px solid #064789",
                 backgroundColor: 'white',
                 position: 'relative'
             },
@@ -68,7 +67,7 @@ const MovieExpanded = ({movie}) => {
                 height: "100%",
             },
             trailer : {
-                width:"80%",
+                width:"90%",
                 height:"520px",
                 margin:"auto",
                 '@media (max-width:380px)': {
