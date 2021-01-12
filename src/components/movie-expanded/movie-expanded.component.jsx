@@ -76,13 +76,7 @@ const useStyles = makeStyles((theme) => ({
 const MovieExpanded = ({movie}) => {
 
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-    const [truncate, setTruncate] = React.useState(true);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-        setTruncate(!truncate);
-    };
 
     return (
         <>
