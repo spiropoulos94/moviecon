@@ -9,7 +9,13 @@
     h1 {
       font-weight: 500;
     }
-
   }
 }
 
+@media (max-width: 320px){
+  .jumbotron-wrapper {
+    .jumbotron {
+      margin-top:54px;
+    }
+  }
+}

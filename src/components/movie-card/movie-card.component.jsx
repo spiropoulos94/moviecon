@@ -19,11 +19,14 @@ import RelatedMovies from "../related-movies/related-movies.component";
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        '@media (max-width:768px)': {
+            maxWidth: "350px"
+        },
         '@media (max-width:450px)': {
             height: "75vh"
         },
         '@media (max-width:375px)': {
-            height: '65vh',
+            height: '75vh',
             maxHeight:'none',
             padding:0,
         },
