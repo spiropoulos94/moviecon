@@ -33,22 +33,45 @@
 
     }
   }
-
 }
+
+@media (max-width: 360px) {
+  .movie-card {
+    .card-image{
+      height: 55%;
+    }
+    .MuiCardContent-root {
+      padding: 13px;
+    }
+    .MuiCardHeader-root {
+      padding: 13px;
+    }
+    .MuiTypography-h5 {
+      font-size: 1.1rem;
+      line-height: 1.4;
+
+    }
+  }
+  .rating {
+    margin: 10px;
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 320px) {
   .movie-card {
     .card-image{
       height: 55%;
     }
     .MuiCardContent-root {
-      padding: 2px;
+      padding:0 10px;
     }
     .MuiCardHeader-root {
-      padding: 3px;
+      padding: 5px;
     }
     .MuiTypography-h5 {
       font-size: 1.1rem;
-      line-height: 1;
+      line-height: 1.2;
 
     }
   }

@@ -124,9 +124,9 @@ const MovieCard = ({movie, onClick}) => {
                     {/*/>*/}
                     <img className="card-image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width={"100%"}  alt={`${movie.original_title}`} />
                     <CardHeader
-                        title={`${movie.original_title}`}
+                        title={`${movie.original_title} (${movie.release_date.substring(0, 4)})`}
                         className={classes.title}
-                        subheader={`${movie.release_date.substring(0, 4)}`}
+                        // subheader={`${movie.release_date.substring(0, 4)}`}
                     />
 
                     <CardContent>
