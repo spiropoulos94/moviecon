@@ -3,7 +3,7 @@ import "./movie-avatar.styles.scss";
 
 const MovieAvatar = ({movie}) => {
     return (
-        <div className="col-5 col-md-3 movie-avatar-wrapper" data-wow-delay="0.1s">
+        <div className="col-10 col-md-3 movie-avatar-wrapper" data-wow-delay="0.1s">
             <div className="related-movie">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="img-fluid" alt=""/>
                 <div className="movie-avatar">
