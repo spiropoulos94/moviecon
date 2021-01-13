@@ -77,9 +77,12 @@ const  MovieDialog = ({movie, classes}) => {
             .then(res => res.json())
             .then(data => {
                 setMovieDetails(data)
-                console.log("appended data", data)
+                // console.log("appended data", data)
             })
     },[])
+
+    // console.log("movie dialog data", movieDetails)
+
 
     const handleClickOpen = () => {
         setOpen(true);

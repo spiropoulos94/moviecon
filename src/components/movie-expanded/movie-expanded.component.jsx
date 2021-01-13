@@ -17,9 +17,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import RelatedMovies from "../related-movies/related-movies.component";
 
 
-//TODO TRAVA EDW TA MOVIE DETAILS KAI KANE TO MOVIE EXPANDED HYDRATE
 
-const MovieExpanded = ({movie}) => {
+const MovieExpanded = ({movie, movieDetails}) => {
         const useStyles = makeStyles((theme) => ({
             root: {
                 maxWidth: "100%",
@@ -78,9 +77,6 @@ const MovieExpanded = ({movie}) => {
             }
         }));
         const classes = useStyles();
-
-        console.log("data in expanded card", movie)
-
     return (
         <>
             {movie && <div>
