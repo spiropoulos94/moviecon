@@ -79,6 +79,7 @@ const MovieExpanded = ({movie}) => {
         }));
         const classes = useStyles();
 
+        console.log("data in expanded card", movie)
 
     return (
         <>
@@ -95,7 +96,7 @@ const MovieExpanded = ({movie}) => {
                             <iframe width="100%" height="100%"
                                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                             </iframe>
-                        </div>
+                        </div>}
                         <CardContent>
                             <Typography variant="p" component="p" align="center" >
                                 {movie.overview}

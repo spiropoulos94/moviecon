@@ -73,9 +73,12 @@ const  MovieDialog = ({movie, classes}) => {
     const [movieDetails, setMovieDetails] = useState(null)
 
     useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0`)
+        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0&append_to_response=videos,images,similar`)
             .then(res => res.json())
-            .then(data => setMovieDetails(data))
+            .then(data => {
+                setMovieDetails(data)
+                console.log("appended data", data)
+            })
     },[])
 
     const handleClickOpen = () => {

@@ -106,7 +106,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieCard = ({movie, onClick}) => {
-    console.log("MOVIE IS ", movie)
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [truncate, setTruncate] = React.useState(true);
