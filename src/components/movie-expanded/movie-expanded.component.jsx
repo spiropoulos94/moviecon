@@ -115,49 +115,28 @@ const MovieExpanded = ({movie, movieDetails}) => {
                                     </Typography>
                                 </div>
                             </CardActions>
-                                <Typography paragraph>Reviews</Typography>
-                            <div className="mb-4">
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon/>}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header"
-                                    >
-                                        <Typography className={classes.heading}>Accordion 1</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                            malesuada
-                                            lacus
-                                            ex,
-                                            sit amet blandit leo lobortis eget.
-                                        </Typography>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon/>}
-                                        aria-controls="panel2a-content"
-                                        id="panel2a-header"
-                                    >
-                                        <Typography className={classes.heading}>Accordion 2</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                            malesuada
-                                            lacus
-                                            ex,
-                                            sit amet blandit leo lobortis eget.
-                                        </Typography>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </div>
-                            <Typography paragraph>Similar Movies</Typography>
-                            <RelatedMovies/>
-                        </CardContent>
 
+                            { movieDetails.similar.results.length > 0 && <Typography paragraph>Similar Movies</Typography>}
+                            <RelatedMovies relatedMovies={movieDetails.similar.results}/>
+                            {movieDetails.reviews.results.length>0 && <Typography paragraph>Reviews</Typography>}
+                            <div className="mb-4">
+                                {movieDetails.reviews.results.map(({author, content}) =>
+                                    <Accordion>
+                                        <AccordionSummary
+                                            expandIcon={<ExpandMoreIcon/>}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
+                                        >
+                                            <Typography className={classes.heading}>{author}</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <Typography>
+                                                {content}
+                                            </Typography>
+                                        </AccordionDetails>
+                                    </Accordion>)}
+                            </div>
+                        </CardContent>
                     </Card>
                 </div>}
             </>

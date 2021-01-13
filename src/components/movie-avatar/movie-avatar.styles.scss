@@ -4,6 +4,10 @@
   right: 0;
   bottom: 10px;
   transition: bottom 0.4s;
+  h2,h4,span {
+    color: white !important;
+
+  }
 }
 
 
@@ -43,9 +47,9 @@
 
 @media (max-width: 321px) {
   .related-movie-content {
-    bottom: 2px;
-    h4, span {
-      font-size: 12px;
+    bottom: -20px;
+    h4, span , h2 {
+      font-size: 12px ;
     }
   }
 

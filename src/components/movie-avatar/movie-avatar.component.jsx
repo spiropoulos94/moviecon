@@ -1,15 +1,16 @@
 import React from 'react';
 import "./movie-avatar.styles.scss";
 
-const MovieAvatar = () => {
+const MovieAvatar = ({movie}) => {
     return (
         <div className="col-5 col-md-3 movie-avatar-wrapper" data-wow-delay="0.1s">
             <div className="related-movie">
-                <img src="https://images.pexels.com/photos/5797969/pexels-photo-5797969.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" className="img-fluid" alt=""/>
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="img-fluid" alt=""/>
                 <div className="movie-avatar">
                     <div className="related-movie-content">
-                        <h4>Harry Poster</h4>
-                        <span>2011</span>
+                        <h4>{movie.original_title}</h4>
+                        <h2>{movie.vote_average}</h2>
+                        <span>{movie.release_date.substring(0, 4)}</span>
                     </div>
                 </div>
             </div>
