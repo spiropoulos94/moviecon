@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -70,6 +70,13 @@ const DialogActions = withStyles((theme) => ({
 
 const  MovieDialog = ({movie, classes}) => {
     const [open, setOpen] = React.useState(false);
+    const [movieDetails, setMovieDetails] = useState(null)
+
+    useEffect(()=>{
+        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0`)
+            .then(res => res.json())
+            .then(data => setMovieDetails(data))
+    },[])
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -89,7 +96,7 @@ const  MovieDialog = ({movie, classes}) => {
 
                 </DialogTitle>
                 <DialogContent dividers>
-                    <MovieExpanded movie={movie} />
+                    {movieDetails && (<MovieExpanded movie={movie} movieDetails={movieDetails} />)}
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleClose} color="primary">

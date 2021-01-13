@@ -17,6 +17,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import RelatedMovies from "../related-movies/related-movies.component";
 
 
+//TODO TRAVA EDW TA MOVIE DETAILS KAI KANE TO MOVIE EXPANDED HYDRATE
 
 const MovieExpanded = ({movie}) => {
         const useStyles = makeStyles((theme) => ({
