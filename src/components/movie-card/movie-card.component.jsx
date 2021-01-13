@@ -151,8 +151,11 @@ const MovieCard = ({movie, onClick}) => {
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
                             <div className="movie-card-trailer mb-2">
-                                <iframe width="100%" height="315"
-                                        src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                <iframe
+                                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+
+                                    width="100%" height="315"
+                                        src="https://www.youtube.com/embed/tgbNymZ7vqY&fs=1">
                                 </iframe>
                             </div>
                             <Typography paragraph>Reviews</Typography>

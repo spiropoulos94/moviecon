@@ -67,7 +67,7 @@ const MovieExpanded = ({movie}) => {
                 height: "100%",
             },
             trailer : {
-                width:"90%",
+                width:"100%",
                 height:"520px",
                 margin:"auto",
                 '@media (max-width:380px)': {

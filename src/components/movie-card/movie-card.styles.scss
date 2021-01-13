@@ -3,6 +3,9 @@
   .card-image {
     height: 65%;
   }
+  svg {
+    vertical-align: text-bottom;
+  }
 }
 
 .card-bottom {
@@ -61,7 +64,7 @@
 @media (max-width: 320px) {
   .movie-card {
     .card-image{
-      height: 60%;
+      height: 67%;
     }
     .MuiCardContent-root {
       padding:6px;
