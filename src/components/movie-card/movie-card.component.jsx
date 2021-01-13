@@ -54,8 +54,11 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '1rem',
         margin:'auto',
         '@media (max-width:320px)': {
-            fontSize: '0.75rem',
+            fontSize: '0.7rem',
         },
+        '@media (max-width:390px)': {
+            fontSize: '0.8rem',
+        }
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
