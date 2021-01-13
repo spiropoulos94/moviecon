@@ -16,6 +16,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import "./movie-card.styles.scss";
 import RelatedMovies from "../related-movies/related-movies.component";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,8 +43,11 @@ const useStyles = makeStyles((theme) => ({
             padding:"0",
         },
         position: 'relative',
+        transform: "translateZ(0)",
+        transition: "transform 0.25s ease-out",
         '&:hover': {
             cursor: "pointer",
+            transform: "scale(1.05)"
         }
     },
     genres: {
@@ -105,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const MovieCard = ({movie, onClick}) => {
+const MovieCard = ({movie, onClick, movieDetails}) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [truncate, setTruncate] = React.useState(true);
@@ -117,7 +121,7 @@ const MovieCard = ({movie, onClick}) => {
 
     return (
         <>
-            {movie && <div onClick={onClick} className="movie-card">
+            {movie && movieDetails && <div onClick={onClick} className="movie-card">
                 <Card className={classes.root} raised>
                     {/*<CardMedia*/}
                     {/*    className={classes.media}*/}
@@ -142,9 +146,9 @@ const MovieCard = ({movie, onClick}) => {
                                     <ThumbUpRoundedIcon/>
                                     <span className="rating">{movie.vote_average}</span>
                             </Typography>
-                            <Typography className={classes.genres} variant="body2" color="textSecondary" component="p">
-                                Action/Drama/Romance
-                            </Typography>
+                            <Box className={classes.genres} fontStyle="italic">
+                                {movieDetails.genres.map(genre=><span> {genre.name}</span>)}
+                            </Box>
                         {/*</div>*/}
                     </CardActions>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>

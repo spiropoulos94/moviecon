@@ -73,7 +73,7 @@ const  MovieDialog = ({movie, classes}) => {
     const [movieDetails, setMovieDetails] = useState(null)
 
     useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0&append_to_response=videos,images,similar`)
+        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0&append_to_response=videos,images,similar,reviews`)
             .then(res => res.json())
             .then(data => {
                 setMovieDetails(data)
@@ -93,7 +93,7 @@ const  MovieDialog = ({movie, classes}) => {
 
     return (
         <div>
-            <MovieCard movie={movie} onClick={handleClickOpen} />
+            <MovieCard movie={movie} movieDetails={movieDetails} onClick={handleClickOpen} />
 
             <Dialog classes={{ paper: classes.dialogPaper }} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} maxWidth="lg" >
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
