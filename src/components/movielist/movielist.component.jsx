@@ -47,7 +47,7 @@ const MovieList = () => {
     return (
         <>
             <div className="movie-list">
-                {isFetching && <Spinner/>}
+                {!data && <Spinner/>}
                 {data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
             </div>
         </>
