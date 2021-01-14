@@ -10,7 +10,7 @@ const MovieAvatar = ({movie}) => {
                     <div className="related-movie-content">
                         <h4>{movie.original_title}</h4>
                         <h2>{movie.vote_average}</h2>
-                        <span>{movie.release_date.substring(0, 4)}</span>
+                        {movie.release_date && <span>{movie.release_date.substring(0, 4)}</span>}
                     </div>
                 </div>
             </div>
