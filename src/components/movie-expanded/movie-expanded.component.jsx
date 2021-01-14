@@ -78,7 +78,6 @@ const MovieExpanded = ({movie, movieDetails}) => {
         return (
             <>
                 {movie && <div>
-                    <Card className={classes.root} raised>
                         {/*<CardMedia*/}
                         {/*    className={classes.media}*/}
                         {/*    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}*/}
@@ -91,7 +90,6 @@ const MovieExpanded = ({movie, movieDetails}) => {
                             {/*</iframe>*/}
                             <YouTube videoId={movieDetails.videos.results[0].key} className={classes.trailer}/>
                             {/*</div>*/}
-                            <CardContent>
                                 <Box fontStyle="italic" fontSize={"1.5rem"}>
                                     <Typography variant="p" component="p" align="center">
                                         {movieDetails.tagline}
@@ -100,7 +98,6 @@ const MovieExpanded = ({movie, movieDetails}) => {
                                 <Typography variant="p" component="p" align="center">
                                     {movieDetails.overview}
                                 </Typography>
-                            </CardContent>
                             <CardActions disableSpacing>
                                 <div className="d-flex align-items-center justify-content-around card-bottom">
                                     <Typography variant="body4" color="textSecondary" component="p">
@@ -137,7 +134,6 @@ const MovieExpanded = ({movie, movieDetails}) => {
                                     </Accordion>)}
                             </div>
                         </CardContent>
-                    </Card>
                 </div>}
             </>
         );

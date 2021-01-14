@@ -25,11 +25,17 @@ const MovieList = () => {
         return data
     }
 
-    const {data, isFetching, fetchNextPage, isError, hasNextPage} = useInfiniteQuery("movies", (page)=> fetchMovies(page),
+    const {
+        data,
+        isFetching,
+        fetchNextPage,
+        isError,
+        hasNextPage
+    } = useInfiniteQuery("movies", (page) => fetchMovies(page),
         {
-            getNextPageParam:((lastPage) => {
+            getNextPageParam: ((lastPage) => {
                 console.log("last page is", lastPage)
-                if(lastPage.page === lastPage.total_pages ) return undefined;
+                if (lastPage.page === lastPage.total_pages) return undefined;
                 return lastPage.page + 1;
             })
         })
@@ -39,10 +45,12 @@ const MovieList = () => {
 
 
     return (
-        <div className="movie-list">
-            {isFetching && <Spinner/>}
-            {data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
-        </div>
+        <>
+            <div className="movie-list">
+                {isFetching && <Spinner/>}
+                {data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
+            </div>
+        </>
     );
 };
 

@@ -10,7 +10,6 @@ const Jumbotron = () => {
                     <div>
                         <h1 className="display-3 mb-4">In Theaters</h1>
                         <p className="lead">Browse through the latest releases or search for a specific movie</p>
-                        <SearchInput/>
                     </div>
                 </div>
 
