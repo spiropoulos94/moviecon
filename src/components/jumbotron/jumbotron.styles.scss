@@ -9,14 +9,36 @@
     h1 {
       font-weight: 500;
       font-family: 'Anton', sans-serif;
+      font-size: 7rem;
     }
   }
 }
 
-@media (max-width: 320px){
+
+
+@media (max-width: 410px){
   .jumbotron-wrapper {
     .jumbotron {
       margin-top:54px;
+      h1 {
+        font-weight: 500;
+        font-family: 'Anton', sans-serif;
+        font-size: 5rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 300px){
+  .jumbotron-wrapper {
+    .jumbotron {
+      h1 {
+        font-size: 4rem;
+      }
+
     }
   }
 }
