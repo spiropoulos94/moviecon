@@ -10,6 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import MovieCard from "../movie-card/movie-card.component";
 import MovieExpanded from "../movie-expanded/movie-expanded.component";
+import {useQuery} from "react-query";
 
 const styles = (theme) => ({
     root: {
@@ -70,19 +71,15 @@ const DialogActions = withStyles((theme) => ({
 
 const  MovieDialog = ({movie, classes}) => {
     const [open, setOpen] = React.useState(false);
-    const [movieDetails, setMovieDetails] = useState(null)
 
-    useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0&append_to_response=videos,images,similar,reviews`)
-            .then(res => res.json())
-            .then(data => {
-                setMovieDetails(data)
-                // console.log("appended data", data)
-            })
-    },[])
 
-    // console.log("movie dialog data", movieDetails)
+    const fetchMovieDetails = async (movieID) => {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=bc50218d91157b1ba4f142ef7baaa6a0&append_to_response=videos,images,similar,reviews`)
+        const data = await res.json()
+        return data
+    }
 
+    const { data:movieDetails, error, isLoading } = useQuery(`movieDetails_for_${movie.title}`, fetchMovieDetails)
 
     const handleClickOpen = () => {
         setOpen(true);
