@@ -5,6 +5,7 @@ import MovieList from "../movielist/movielist.component";
 import SearchInput from "../searchInput/search-input.component";
 import {useInfiniteQuery} from "react-query";
 import Button from "@material-ui/core/Button";
+import FullWidthTabs from "../searchInput/search-input.component";
 
 const MainView = () => {
 
@@ -13,7 +14,7 @@ const MainView = () => {
 
     const [latestMoviesPage, setLatestMoviesPage] = useState(1)
     const [searchResultsPage, setSearchResultsPage] = useState(1)
-    const [searchQuery, setSearchQuery] = useState("potter")
+    const [searchQuery, setSearchQuery] = useState("")
 
     const fetchLatestMovies = async (latestMoviesPage) => {
         const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=${latestMoviesPage}`)
@@ -59,9 +60,11 @@ const MainView = () => {
             <>
             <Jumbotron/>
             <div className="container my-5">
-                <SearchInput setContent={setContent} setSearchQuery={setSearchQuery} />
+                <FullWidthTabs setContent={setContent} setSearchQuery={setSearchQuery} />
             </div>
-            { content=="now_playing" ? <MovieList data={movies}/> : <MovieList data={searchResults}/> }
+            { content=="now_playing" && <MovieList data={movies}/>}
+            { content=="search" && searchQuery!="" && <MovieList data={searchResults}/>}
+
             </>
 
         </div>
