@@ -117,6 +117,8 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
     const [expanded, setExpanded] = React.useState(false);
     const [truncate, setTruncate] = React.useState(true);
 
+
+
     const handleExpandClick = () => {
         setExpanded(!expanded);
         setTruncate(!truncate);
@@ -126,9 +128,11 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
         e.target.src = 'https://media.istockphoto.com/photos/no-image-available-picture-id531302789'
     }
 
+
+
     return (
         <>
-            {movie && movieDetails && <div onClick={onClick} className="movie-card">
+            {movie && movieDetails && movie.overview && <div onClick={onClick} className='movie-card'>
                 <Card className={classes.root} raised>
                     {/*<CardMedia*/}
                     {/*    className={classes.media}*/}
@@ -148,7 +152,6 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing className={classes.cardActions}>
-                        {/*<div className="d-flex align-items-center justify-content-around card-bottom">*/}
                             <Typography variant="body4" color="textSecondary" component="p">
                                     <ThumbUpRoundedIcon/>
                                     <span className="rating">{movie.vote_average}</span>
@@ -156,71 +159,7 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
                             <Box className={classes.genres} fontStyle="italic">
                                 {movieDetails.genres.map(genre=><span> {genre.name}</span>)}
                             </Box>
-                        {/*</div>*/}
                     </CardActions>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            <div className="movie-card-trailer mb-2">
-                                <iframe
-                                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
-
-                                    width="100%" height="315"
-                                        src="https://www.youtube.com/embed/tgbNymZ7vqY&fs=1">
-                                </iframe>
-                            </div>
-                            <Typography paragraph>Reviews</Typography>
-                            <div className="mb-4">
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon/>}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header"
-                                    >
-                                        <Typography className={classes.heading}>Accordion 1</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                            malesuada
-                                            lacus
-                                            ex,
-                                            sit amet blandit leo lobortis eget.
-                                        </Typography>
-                                    </AccordionDetails>
-                                </Accordion>
-                                <Accordion>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon/>}
-                                        aria-controls="panel2a-content"
-                                        id="panel2a-header"
-                                    >
-                                        <Typography className={classes.heading}>Accordion 2</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                            malesuada
-                                            lacus
-                                            ex,
-                                            sit amet blandit leo lobortis eget.
-                                        </Typography>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </div>
-                            <Typography paragraph>Similar Movies</Typography>
-                            <RelatedMovies/>
-                            <CardActions disableSpacing>
-                                <IconButton
-                                    className={clsx(classes.secondExpand, {})}
-                                    onClick={handleExpandClick}
-                                    aria-expanded={expanded}
-                                    aria-label="show more"
-                                >
-                                    <ExpandMoreIcon/>
-                                </IconButton>
-                            </CardActions>
-                        </CardContent>
-                    </Collapse>
                 </Card>
             </div>}
         </>
