@@ -95,7 +95,7 @@ const  MovieDialog = ({movie, classes}) => {
             <Dialog classes={{ paper: classes.dialogPaper }} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} maxWidth="lg" >
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                     {movie.title}
-                    ({`${movie.release_date.substring(0, 4)}`})
+                    {movie.release_date && <>({`${movie.release_date.substring(0, 4)}`})</>}
 
                 </DialogTitle>
                 <DialogContent dividers>
