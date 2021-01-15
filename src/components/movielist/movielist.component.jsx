@@ -3,6 +3,7 @@ import "./movielist.styles.scss";
 import Spinner from "../spinner/spinner.component";
 import {useInfiniteQuery} from "react-query";
 import MovieDialog from "../movie-dialog/movie-dialog.component";
+import SearchInput from "../searchInput/search-input.component";
 
 
 // nowPlayingUrl
@@ -17,7 +18,11 @@ import MovieDialog from "../movie-dialog/movie-dialog.component";
 
 const MovieList = () => {
 
+    const [content, setContent] = useState("now_playing")
+
     const [page, setPage] = useState(1)
+    const [searchResultsPage, setSearchResultsPage] = useState(1)
+    const [searchQuery, setSearchQuery] = useState("potter")
 
     const fetchMovies = async (page) => {
         const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=${page}`)
@@ -25,12 +30,14 @@ const MovieList = () => {
         return data
     }
 
+    const fetchMoviesBySearch = async (searchQuery, page) => {
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&query=${searchQuery}&page=${searchResultsPage}&include_adult=false`)
+        const data = await res.json();
+        return data
+    }
+
     const {
-        data,
-        isFetching,
-        fetchNextPage,
-        isError,
-        hasNextPage
+        data:movies
     } = useInfiniteQuery("movies", (page) => fetchMovies(page),
         {
             getNextPageParam: ((lastPage) => {
@@ -40,15 +47,30 @@ const MovieList = () => {
             })
         })
 
+    const {
+        data:searchResults
 
-    console.log(data)
+    } = useInfiniteQuery(`movies_results_for_${searchQuery}`, (page) => fetchMoviesBySearch(searchQuery),
+        {
+            getNextPageParam: ((lastPage) => {
+                console.log("last page is", lastPage)
+                if (lastPage.page === lastPage.total_pages) return undefined;
+                return lastPage.page + 1;
+            })
+        })
+
+
+
 
 
     return (
         <>
+            <div className="container my-5">
+                <SearchInput setSearchQuery={setSearchQuery} />
+            </div>
             <div className="movie-list">
-                {!data && <Spinner/>}
-                {data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
+                {!movies && <Spinner/>}
+                {movies && movies.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
             </div>
         </>
     );

@@ -8,9 +8,6 @@ const MainView = () => {
     return (
         <div>
             <Jumbotron/>
-            <div className="container my-5">
-                <SearchInput/>
-            </div>
             <MovieList/>
         </div>
     );
