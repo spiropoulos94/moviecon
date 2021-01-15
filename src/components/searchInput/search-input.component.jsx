@@ -69,7 +69,7 @@ const SearchInput = ({setContent, setSearchQuery}) => {
     const handleSubmit = e => {
         e.preventDefault();
         setSearchQuery(inputValue)
-        setContent("")
+        setContent("search")
     }
 
     const handleChange = (event, newValue) => {
