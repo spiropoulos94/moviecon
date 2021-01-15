@@ -10,12 +10,12 @@ const MainView = () => {
 
     const [content, setContent] = useState("now_playing")
 
-    const [page, setPage] = useState(2)
+    const [latestMoviesPage, setLatestMoviesPage] = useState(2)
     const [searchResultsPage, setSearchResultsPage] = useState(1)
     const [searchQuery, setSearchQuery] = useState("potter")
 
-    const fetchMovies = async (page) => {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=${page}`)
+    const fetchLatestMovies = async (latestMoviesPage) => {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=${latestMoviesPage}`)
         const data = await res.json();
         return data
     }
@@ -28,7 +28,7 @@ const MainView = () => {
 
     const {
         data:movies
-    } = useInfiniteQuery("movies", (page) => fetchMovies(page),
+    } = useInfiniteQuery(`latestMovies_page_${latestMoviesPage}`, (page) => fetchLatestMovies(latestMoviesPage),
         {
             getNextPageParam: ((lastPage) => {
                 console.log("last page is", lastPage)
