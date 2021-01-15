@@ -63,7 +63,7 @@ const MainView = () => {
             </div>
             { content=="now_playing" ? <MovieList data={movies}/> : <MovieList data={searchResults}/> }
             </>
-            <Button onClick={(latestMoviesPage)=>fetchNextPage(latestMoviesPage)} >Load More</Button>
+
         </div>
     );
 };
