@@ -122,6 +122,10 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
         setTruncate(!truncate);
     };
 
+    const addDefaultSrc = (e) =>{
+        e.target.src = 'https://media.istockphoto.com/photos/no-image-available-picture-id531302789'
+    }
+
     return (
         <>
             {movie && movieDetails && <div onClick={onClick} className="movie-card">
@@ -131,7 +135,7 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
                     {/*    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}*/}
                     {/*    title={`${movie.original_title}`}*/}
                     {/*/>*/}
-                    <img className="card-image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width={"100%"}  alt={`${movie.original_title}`} />
+                    <img className="card-image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} onError={(e)=>addDefaultSrc(e)} width={"100%"}  alt={`${movie.original_title}`} />
                     <CardHeader
                         title={`${movie.original_title} (${movie.release_date.substring(0, 4)})`}
                         className={classes.title}

@@ -28,14 +28,14 @@ const styles = (theme) => ({
     },
     dialogPaper: {
         backgroundColor:"#b8cdf8",
-        height:"85vh",
+        maxHeight:"85vh",
         '@media (max-width:320px)': {
-            height:"99vh",
+            maxHeight:"99vh",
             width:"100%",
-            maxHeight:"100%"
+            // maxHeight:"100%"
         },
         '@media (max-width:450px)': {
-            height: "95vh",
+            maxHeight: "95vh",
             margin:10
 
     },
