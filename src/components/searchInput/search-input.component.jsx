@@ -68,7 +68,6 @@ const SearchInput = ({setContent, setSearchQuery}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if(inputValue=="")return ;
         setSearchQuery(inputValue)
         setContent("")
     }
