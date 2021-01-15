@@ -24,7 +24,12 @@ const MovieExpanded = ({movie, movieDetails}) => {
             backgroundColor: 'white',
             position: 'relative'
         },
+        cardContent: {
+            color:'white',
+            backgroundColor:'#4e5283'
+        },
         genres: {
+            color:'white',
             fontSize: '1rem',
             '@media (max-width:320px)': {
                 fontSize: '0.75rem',
@@ -83,7 +88,7 @@ const MovieExpanded = ({movie, movieDetails}) => {
                 {/*    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}*/}
                 {/*    title={`${movie.original_title}`}*/}
                 {/*/>*/}
-                <CardContent>
+                <CardContent className={classes.cardContent}>
                     {/*<div className={classes.trailer}>*/}
                     {/*<iframe width="100%" height="100%"*/}
                     {/*        src={`https://www.youtube.com/embed/59fc956792514113bb02d590`}>*/}
@@ -100,13 +105,13 @@ const MovieExpanded = ({movie, movieDetails}) => {
                     </Typography>
                     <CardActions disableSpacing>
                         <div className="d-flex align-items-center justify-content-around card-bottom">
-                            <Typography variant="body4" color="textSecondary" component="p">
+                            <Typography className={classes.cardContent} variant="body4" color="textSecondary" component="p">
                                 <div className="d-flex align-items-center">
                                     <ThumbUpRoundedIcon/>
                                     <span className="rating">{movieDetails.vote_average}</span>
                                 </div>
                             </Typography>
-                            <Typography className={classes.genres} variant="body2" color="textSecondary"
+                            <Typography  className={classes.genres} variant="body2" color="textSecondary"
                                         component="p">
                                 {movieDetails.genres.map(genre => <span> {genre.name}</span>)}
                             </Typography>
