@@ -45,6 +45,11 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: "transparent",
+        height:"15vh",
+        "@media(max-width:320px)":{
+            height:"20vh"
+        }
+
     },
     heading: {
         backgroundColor: "transparent",
@@ -52,9 +57,13 @@ const useStyles = makeStyles((theme) => ({
         textAlign:'center',
         fontFamily:"'Lobster', cursive",
         letterSpacing:'2px',
-        color:"#064789"
+        color:"#064789",
+        "@media(max-width:320px)":{
+            fontSize:"2rem"
+        }
+    },
 
-    }
+
 }));
 
 
@@ -105,7 +114,7 @@ const SearchInput = ({setContent, setSearchQuery}) => {
                    <Box className={classes.heading}> Latest Releases </Box>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    <div className="search-input">
+                    <div className="search-input" >
                         <form onSubmit={handleSubmit} className="d-flex no-wrap">
                             <input onChange={(e)=>{setInputValue(e.target.value)}} value={inputValue} className="form-control" type="search" placeholder="Type movie title..." aria-label="Search"/>
                             <button   className="btn" type="submit">Search</button>
