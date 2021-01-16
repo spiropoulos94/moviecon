@@ -62,12 +62,15 @@ const useStyles = makeStyles((theme) => ({
             fontSize:"2rem"
         }
     },
+    searchButton: {
+        color:'white'
+    }
 
 
 }));
 
 
-const SearchInput = ({setContent, setSearchQuery}) => {
+const FullWidthTabs = ({setContent, setSearchQuery}) => {
 
     const classes = useStyles();
     const theme = useTheme();
@@ -117,7 +120,7 @@ const SearchInput = ({setContent, setSearchQuery}) => {
                     <div className="search-input" >
                         <form onSubmit={handleSubmit} className="d-flex no-wrap">
                             <input onChange={(e)=>{setInputValue(e.target.value)}} value={inputValue} className="form-control" type="search" placeholder="Type movie title..." aria-label="Search"/>
-                            <button   className="btn" type="submit">Search</button>
+                            <button   className={`btn ${classes.searchButton}`} type="submit">Search</button>
                         </form>
                     </div>
                 </TabPanel>
@@ -127,4 +130,4 @@ const SearchInput = ({setContent, setSearchQuery}) => {
     );
 };
 
-export default SearchInput;
+export default FullWidthTabs;
