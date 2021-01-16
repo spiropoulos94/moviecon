@@ -29,27 +29,34 @@ const MainView = () => {
     }
 
     const {
-        data:movies,fetchNextPage
-    } = useInfiniteQuery(`latestMovies_page_${latestMoviesPage}`, (page) => fetchLatestMovies(latestMoviesPage),
+        data:movies,fetchNextPage:fetchNextRecentsPage
+    } = useInfiniteQuery(`latestMovies_page_${latestMoviesPage}`, ({ pageParam = 1 }) => fetchLatestMovies(pageParam),
         {
             getNextPageParam: ((lastPage) => {
-                console.log("last page is", lastPage)
+                console.log("last recent movie page is", lastPage)
                 if (lastPage.page === lastPage.total_pages) return undefined;
                 return lastPage.page + 1;
             })
         })
+
+
+    console.log("recent movies", movies)
 
     const {
-        data:searchResults
+        data:searchResults,
+        fetchNextPage:fetchNextSearchPage
 
-    } = useInfiniteQuery(`movies_results_for_${searchQuery}`, (page) => fetchMoviesBySearch(searchQuery, searchResultsPage),
+    } = useInfiniteQuery(`movies_results_for_${searchQuery}`, ({ pageParam = 1 }) => fetchMoviesBySearch(searchQuery, searchResultsPage),
         {
             getNextPageParam: ((lastPage) => {
-                console.log("last page is", lastPage)
+                console.log("last search results page is", lastPage)
                 if (lastPage.page === lastPage.total_pages) return undefined;
                 return lastPage.page + 1;
             })
         })
+
+    console.log("search results", searchResults)
+
 
 
 
@@ -66,7 +73,10 @@ const MainView = () => {
             { content=="search" && searchQuery!="" && <MovieList data={searchResults}/>}
 
             </>
-                <Button className="m-5" color="primary" variant="contained" >Load more</Button>
+            {content ==="now_playing" && <Button onClick={() => fetchNextRecentsPage()} className="m-5" color="primary" variant="contained">Load
+                more</Button>}
+            {content ==="search" && <Button onClick={() => fetchNextSearchPage()} className="m-5" color="primary" variant="contained">Load
+                more</Button>}
         </div>
     );
 };

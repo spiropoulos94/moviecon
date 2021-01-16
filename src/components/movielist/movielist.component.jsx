@@ -22,7 +22,8 @@ const MovieList = ({data}) => {
         <>
             <div className="movie-list">
                 {!data && <Spinner/>}
-                {data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}
+                {/*{data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}*/}
+                {data && data.pages.map(page => page.results.map(movie=> <MovieDialog key={movie.id} movie={movie} />))}
             </div>
         </>
     );
