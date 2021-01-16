@@ -29,7 +29,8 @@ const MainView = () => {
     }
 
     const {
-        data:movies,fetchNextPage:fetchNextRecentsPage
+        data:movies,fetchNextPage:fetchNextRecentsPage,
+        hasNextPage:hasNextRecentsPage
     } = useInfiniteQuery(`latestMovies_page_${latestMoviesPage}`, ({ pageParam = 1 }) => fetchLatestMovies(pageParam),
         {
             getNextPageParam: ((lastPage) => {
@@ -43,7 +44,8 @@ const MainView = () => {
 
     const {
         data:searchResults,
-        fetchNextPage:fetchNextSearchPage
+        fetchNextPage:fetchNextSearchPage,
+        hasNextPage:hasNextResultsPage,
 
     } = useInfiniteQuery(`movies_results_for_${searchQuery}`, ({ pageParam = 1 }) => fetchMoviesBySearch(searchQuery, pageParam),
         {
@@ -71,9 +73,9 @@ const MainView = () => {
             { content=="search" && searchQuery!="" && <MovieList data={searchResults}/>}
 
             </>
-            {content ==="now_playing" && <Button onClick={() => fetchNextRecentsPage()} className="m-5" color="primary" variant="contained">Load
+            {content ==="now_playing" && hasNextRecentsPage && <Button onClick={() => fetchNextRecentsPage()} className="m-5" color="primary" variant="contained">Load
                 more</Button>}
-            {content ==="search" && <Button onClick={() => fetchNextSearchPage()} className="m-5" color="primary" variant="contained">Load
+            {content ==="search" && hasNextResultsPage &&  <Button onClick={() => fetchNextSearchPage()} className="m-5" color="primary" variant="contained">Load
                 more</Button>}
         </div>
     );
