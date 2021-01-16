@@ -124,19 +124,13 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
 
     return (
         <>
-            {/*MAKING SURE THE MOVIE CARD HAS ENOUGH INFO TO BE DISPLAYED*/}
             {enoughInfoToDisplayMovieCard && <div onClick={onClick} className='movie-card'>
                 <Card className={classes.root} raised>
-                    {/*<CardMedia*/}
-                    {/*    className={classes.media}*/}
-                    {/*    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}*/}
-                    {/*    title={`${movie.original_title}`}*/}
-                    {/*/>*/}
+
                     <img className="card-image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} onError={(e)=>addDefaultSrc(e)} width={"100%"}  alt={`${movie.original_title}`} />
                     <CardHeader
                         title={`${movie.original_title} (${movie.release_date.substring(0, 4)})`}
                         className={classes.title}
-                        // subheader={`${movie.release_date.substring(0, 4)}`}
                     />
 
                     <CardContent>

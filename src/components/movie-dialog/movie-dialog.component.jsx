@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -90,7 +90,7 @@ const  MovieDialog = ({movie, classes}) => {
 
     return (
         <div>
-            <MovieCard movie={movie} movieDetails={movieDetails} onClick={handleClickOpen} />
+            <MovieCard key={`${movie.id} ${movie.id}`} movie={movie} movieDetails={movieDetails} onClick={handleClickOpen} />
 
             <Dialog classes={{ paper: classes.dialogPaper }} onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} maxWidth="lg" >
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
