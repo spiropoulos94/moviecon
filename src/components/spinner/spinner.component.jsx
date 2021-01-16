@@ -5,9 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        '& > * + *': {
-            marginLeft: theme.spacing(2),
-        }
+
     },
 }));
 
@@ -16,8 +14,8 @@ const Spinner = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <CircularProgress />
+        <div className={`${classes.root} mt-5`}>
+            <CircularProgress className="mx-auto" />
         </div>
     );
 };

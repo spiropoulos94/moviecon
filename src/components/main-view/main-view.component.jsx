@@ -30,7 +30,8 @@ const MainView = () => {
 
     const {
         data:movies,fetchNextPage:fetchNextRecentsPage,
-        hasNextPage:hasNextRecentsPage
+        hasNextPage:hasNextRecentsPage,
+        isFetching:isFetchingRecents
     } = useInfiniteQuery(`latestMovies_page_${latestMoviesPage}`, ({ pageParam = 1 }) => fetchLatestMovies(pageParam),
         {
             getNextPageParam: ((lastPage) => {
@@ -40,12 +41,11 @@ const MainView = () => {
         })
 
 
-    console.log("recent movies", movies)
-
     const {
         data:searchResults,
         fetchNextPage:fetchNextSearchPage,
         hasNextPage:hasNextResultsPage,
+        isFetching:isFetchingSearchResults
 
     } = useInfiniteQuery(`movies_results_for_${searchQuery}`, ({ pageParam = 1 }) => fetchMoviesBySearch(searchQuery, pageParam),
         {
@@ -55,12 +55,6 @@ const MainView = () => {
             })
         })
 
-    console.log("search results", searchResults)
-
-
-
-
-
 
     return (
         <div className="text-center">
@@ -69,8 +63,8 @@ const MainView = () => {
             <div className="container my-5">
                 <FullWidthTabs setContent={setContent} setSearchQuery={setSearchQuery} />
             </div>
-            { content=="now_playing" && <MovieList data={movies}/>}
-            { content=="search" && searchQuery!="" && <MovieList data={searchResults}/>}
+            { content=="now_playing" && <MovieList data={movies} isFetching={isFetchingRecents}/>}
+            { content=="search" && searchQuery!="" && <MovieList data={searchResults} isFetching={isFetchingSearchResults}/>}
 
             </>
             {content ==="now_playing" && hasNextRecentsPage && <Button onClick={() => fetchNextRecentsPage()} className="m-5" color="primary" variant="contained">Load

@@ -16,15 +16,17 @@ import SearchInput from "../searchInput/search-input.component";
 //TODO READ ABOUT DEPENDENT QUERIES
 // append to response https://developers.themoviedb.org/3/getting-started/append-to-response
 
-const MovieList = ({data}) => {
+const MovieList = ({data, isFetching}) => {
+
+    console.log(isFetching)
 
     return (
         <>
             <div className="movie-list">
-                {!data && <Spinner/>}
                 {/*{data && data.pages[0].results.map(movie => <MovieDialog key={movie.id} movie={movie}/>)}*/}
                 {data && data.pages.map(page => page.results.map(movie=> <MovieDialog key={movie.id} movie={movie} />))}
             </div>
+            {isFetching && <Spinner/>}
         </>
     );
 };
