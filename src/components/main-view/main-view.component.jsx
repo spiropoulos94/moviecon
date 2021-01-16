@@ -56,7 +56,7 @@ const MainView = () => {
 
 
     return (
-        <div>
+        <div className="text-center">
             <>
             <Jumbotron/>
             <div className="container my-5">
@@ -66,7 +66,7 @@ const MainView = () => {
             { content=="search" && searchQuery!="" && <MovieList data={searchResults}/>}
 
             </>
-
+                <Button className="m-5" color="primary" variant="contained" >Load more</Button>
         </div>
     );
 };
