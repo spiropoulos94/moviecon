@@ -1,21 +1,12 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
 import "./movie-card.styles.scss";
-import RelatedMovies from "../related-movies/related-movies.component";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
@@ -132,7 +123,8 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
 
     return (
         <>
-            {movie && movieDetails && movie.overview && <div onClick={onClick} className='movie-card'>
+            {/*MAKING SURE THE MOVIE CARD HAS ENOUGH INFO TO BE DISPLAYED*/}
+            {movie && movieDetails && movie.overview && movie.vote_average && movie.release_date && <div onClick={onClick} className='movie-card'>
                 <Card className={classes.root} raised>
                     {/*<CardMedia*/}
                     {/*    className={classes.media}*/}
