@@ -22,7 +22,7 @@ const MainView = () => {
         return data
     }
 
-    const fetchMoviesBySearch = async (searchQuery, searchResultsPage) => {
+    const fetchMoviesBySearch = async (searchQuery, searchResultsPage ) => {
         const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&query=${searchQuery}&page=${searchResultsPage}&include_adult=false`)
         const data = await res.json();
         return data
@@ -33,7 +33,6 @@ const MainView = () => {
     } = useInfiniteQuery(`latestMovies_page_${latestMoviesPage}`, ({ pageParam = 1 }) => fetchLatestMovies(pageParam),
         {
             getNextPageParam: ((lastPage) => {
-                console.log("last recent movie page is", lastPage)
                 if (lastPage.page === lastPage.total_pages) return undefined;
                 return lastPage.page + 1;
             })
@@ -46,10 +45,9 @@ const MainView = () => {
         data:searchResults,
         fetchNextPage:fetchNextSearchPage
 
-    } = useInfiniteQuery(`movies_results_for_${searchQuery}`, ({ pageParam = 1 }) => fetchMoviesBySearch(searchQuery, searchResultsPage),
+    } = useInfiniteQuery(`movies_results_for_${searchQuery}`, ({ pageParam = 1 }) => fetchMoviesBySearch(searchQuery, pageParam),
         {
             getNextPageParam: ((lastPage) => {
-                console.log("last search results page is", lastPage)
                 if (lastPage.page === lastPage.total_pages) return undefined;
                 return lastPage.page + 1;
             })
