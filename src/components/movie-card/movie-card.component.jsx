@@ -120,11 +120,12 @@ const MovieCard = ({movie, onClick, movieDetails}) => {
     }
 
 
+    const enoughInfoToDisplayMovieCard = movie && movieDetails && movie.overview && movie.vote_average!=0 && movie.release_date
 
     return (
         <>
             {/*MAKING SURE THE MOVIE CARD HAS ENOUGH INFO TO BE DISPLAYED*/}
-            {movie && movieDetails && movie.overview && movie.vote_average && movie.release_date && <div onClick={onClick} className='movie-card'>
+            {enoughInfoToDisplayMovieCard && <div onClick={onClick} className='movie-card'>
                 <Card className={classes.root} raised>
                     {/*<CardMedia*/}
                     {/*    className={classes.media}*/}
