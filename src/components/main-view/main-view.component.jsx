@@ -8,6 +8,7 @@ import FullWidthTabs from "../searchInput/search-input.component";
 
 const MainView = () => {
 
+    console.log("component mounted")
 
     const [content, setContent] = useState("now_playing")
 
